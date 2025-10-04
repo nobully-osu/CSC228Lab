@@ -8,9 +8,15 @@ module Top(clk, rst, enable, upDown, count, seg7);
 
 	// Add code here to instantiate and connect the three modules together structurally
 
+   // instantiate clock divider
+   ClkDiv clock_divider (
+      .clk(clk),
+      .clkOut(clkCounter)
+   );
+
    // instantiate counter
    Count4 counter (
-      .clk(clk),
+      .clk(clkCounter),
       .rst(rst),
       .enable(enable),
       .upDown(upDown),
