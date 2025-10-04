@@ -7,23 +7,23 @@ module Seg7decode(       // convert active-high 4-bit hex to 7-segment display c
        case(bin)
        //  bit order is segments ABCDEFG
           4'b0000: seg7 = 7'b0000001; // "0"  
-      //////////// insert code here for input patterns 4'b001 through 4'b1111 
+      //////////// insert code here for input patterns 4'b0001 through 4'b1111 
           4'b0001: seg7 = 7'b1001111; // "1"
-          4'b0001: seg7 = 7'b0000001; // "2"
-          4'b0001: seg7 = 7'b0000001; // "3"
-          4'b0001: seg7 = 7'b0000001; // "4"
-          4'b0001: seg7 = 7'b0000001; // "5"
-          4'b0001: seg7 = 7'b0000001; // "6"
-          4'b0001: seg7 = 7'b0000001; // "7"
-          4'b0001: seg7 = 7'b0000001; // "8"
-          4'b0001: seg7 = 7'b0000001; // "9"
-          4'b0001: seg7 = 7'b0000001; // "A"
-          4'b0001: seg7 = 7'b0000001; // "b"
-          4'b0001: seg7 = 7'b0000001; // "C"
-          4'b0001: seg7 = 7'b0000001; // "d"
-          4'b0001: seg7 = 7'b0000001; // "E"
-          4'b0001: seg7 = 7'b0000001; // "F"
-     
+          4'b0010: seg7 = 7'b0010010; // "2" - ABDEG
+          4'b0011: seg7 = 7'b0000110; // "3" - ABCDG
+          4'b0100: seg7 = 7'b1001100; // "4" - FGBC
+          4'b0101: seg7 = 7'b0100100; // "5" - ACDFG
+          4'b0110: seg7 = 7'b0100000; // "6" - ACDEFG
+          4'b0111: seg7 = 7'b0001111; // "7" - ABC
+          4'b1000: seg7 = 7'b0000000; // "8" - ABCDEFG
+          4'b1001: seg7 = 7'b0000100; // "9" - ABCDFG
+          4'b1010: seg7 = 7'b0001000; // "A" - ABCEFG
+          4'b1011: seg7 = 7'b1100000; // "b" - CDEFG
+          4'b1100: seg7 = 7'b0110001; // "C" - ADEF
+          4'b1101: seg7 = 7'b1000010; // "d" - BCDEG
+          4'b1110: seg7 = 7'b0110000; // "E" - ADEFG
+          4'b1111: seg7 = 7'b0111000; // "F" - AEFG
+
           default: seg7 = 7'b1101010; // "n" ("n" for none, but this will never happen)
        endcase
     end   
