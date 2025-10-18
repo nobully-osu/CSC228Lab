@@ -10,6 +10,8 @@ parameter S0 = 3'b000, S1 = 3'b001, S2 = 3'b010, S3 = 3'b011, S4 = 3'b100, S5 = 
 
 initial state = S0;
   always @(rst,zero,one) begin
+    unlocked = 0;
+
     if (rst)
       state = S0;
     else begin
@@ -23,6 +25,7 @@ initial state = S0;
           unlocked = 1;
           state = (zero) ? S1 : (one ? S2 : S0);
         end
+      endcase
     end
   end
 endmodule
