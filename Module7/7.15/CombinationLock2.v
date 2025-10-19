@@ -9,9 +9,11 @@ module CombinationLock (
 parameter S0 = 3'b000, S1 = 3'b001, S2 = 3'b010, S3 = 3'b011, S4 = 3'b100, S5 = 3'b101;
 reg [2:0] state_next;
 
-initial state = S0;
+initial begin 
+    state = S0; 
+    unlocked = 0; 
+    end
   always @(rst,zero,one) begin
-    unlocked   = 0;
     state_next = state;
 
     if (rst) begin
@@ -31,7 +33,6 @@ initial state = S0;
       endcase
     end
 
-    state    = state_next; // update state at end of loop
-    unlocked = (state == S5) ? 1 : 0; // check if state is S5 to unlock, otherwise leave locked
+    state = state_next; // update state at end of loop
   end
 endmodule
