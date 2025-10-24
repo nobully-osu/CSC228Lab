@@ -15,6 +15,21 @@ module comparator (
   reg ltFlag = 0;
   reg eqFlag = 0;
 
-  // insert code here
-
+  always @(*) begin
+    if (f > s) begin 
+      gt = 1;
+      lt = 0;
+      eq = 0;
+    end
+    else if (f < s) begin
+      gt = 0;
+      lt = 1;
+      eq = 0;
+    end
+    else begin
+      gt = 0;
+      lt = 0;
+      eq = 1;
+    end
+  end
 endmodule
